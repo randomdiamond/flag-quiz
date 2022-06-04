@@ -1,11 +1,11 @@
-
+import Quiz from './Quiz.js'
 import './App.scss';
 
 function App() {
   return (
-    <div >
-
-    </div>
+    <>
+<Quiz />
+    </>
   );
 }
 
