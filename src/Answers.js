@@ -1,10 +1,11 @@
-export default function Answers(){
+import { nanoid } from "nanoid";
+
+export default function Answers({answers, checkAnswer}){
     return(
         <div className="answers-container">
-            <button>Dänemark</button>
-            <button>Deutschland</button>
-            <button>Schweiz</button>
-            <button>Spanien</button>
+           {answers.map(answer => (
+               <button key={nanoid()} onClick={() => checkAnswer(answer)}>{answer.german}</button>
+           ))}
         </div>
     )
 }

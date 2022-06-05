@@ -3,8 +3,63 @@
   margin:0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+
+$nav-heigth:min(800px, 95%);
+body{
+  position:relative;
+  height:100vh;
+}
+.start-container{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  .start-button-container{
+    display:grid;
+    place-items: center;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width:max(12%, 140px);
+    aspect-ratio: 1/1;
+  }
+  button{ // start button
+    position: absolute;
+    
+    transition:all 400ms ease-in-out;
+    font-weight: 600;
+    width:90%;
+    aspect-ratio: 1/1;
+    border-radius:50%;
+    background-color: #C2DEFF;
+    color:#0D1216;
+    border:0;
+    font-size: min(max(21px, 3vw), 29px);
+    cursor:pointer;
+    }
+    .start-button-container:hover button{
+      background-color: #8ec3ff; 
+      font-size: min(max(23px, 4vw), 33px);
+      width:100%;
+    }
+    .start-button-container:hover .flag-icon{
+      top:-25%;
+      transform:rotate(10deg)
+    }
+    .flag-icon{
+      font-size:min(max(40px, 4vw), 80px);
+      position: absolute;
+      top:50%;
+      left:50%;
+      transform: translate(-5%,-85%);
+      z-index:-100;
+      transition: all 1000ms ease-in-out;
+      color: #0677f8; ////#18A558 green color
+    }
+  }
+
 .quiz-container{
-  width:min(800px, 95%);
+  width: $nav-heigth;
   display:flex;
   justify-content: center;
   align-items: center;
@@ -31,7 +86,7 @@ nav{
   margin:30px 0 20px;
 }
 .flag{
-  width:65%;
+  height:300px;
 }
 .answers-container{
   display:flex;
@@ -44,7 +99,7 @@ nav{
   background-color: #C2DEFF;
   color:#0D1216;
   border-radius:25px;
-  width:60%;
+  width:55%;
   border:0;
   aspect-ratio: 6/1;
   font-size: min(max(21px, 3vw), 25px);
@@ -55,3 +110,24 @@ nav{
   }
 
 }
+.previous-result-container{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin:50px 0;
+  
+  
+
+}
+.result-message, .wrong-icon, .correct-icon{
+  font-size: min(max(25px, 3.5vw), 30px);
+  margin: 0 6px;
+}
+.wrong-icon{
+  color:#f72626;
+  
+    }
+.correct-icon{
+      color:#18A558;
+      
+    }

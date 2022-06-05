@@ -1,5 +1,5 @@
-export default function FlagCounter(){
+export default function FlagCounter({flagCounter}){
     return(
-        <div className="flag-counter">1 / 10</div>
+        <div className="flag-counter">{flagCounter} / 10</div>
     )
 }
