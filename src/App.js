@@ -5,9 +5,11 @@ import {useState} from 'react'
 
 function App() {
   const [quizStarted, setQuizStarted] = useState(false)
+
   function startQuiz(){
     setQuizStarted(true)
   }
+  
   return (
     <>
 {quizStarted && <Quiz />}

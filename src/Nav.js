@@ -1,7 +1,7 @@
 export default function Nav(){
     return(
         <nav>
-            <h2>flag-quiz.de</h2>
+            <h2>flagQuiz</h2>
             </nav>
     )
 }
