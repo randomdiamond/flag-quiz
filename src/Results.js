@@ -8,6 +8,8 @@ import {
   faCircleXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { nanoid } from "nanoid";
+import pointsIcon from './images/points-icon.svg';
+
 export default function Results({
   answerResultsData,
   allPoints,
@@ -35,7 +37,7 @@ export default function Results({
           {answersCorrect} / 10
         </div>
         <div className="results-data-wrapper-average">
-        <img alt="points" className="points-icon" src="points-icon.svg" />
+        <img alt="points" className="points-icon" src={pointsIcon} />
           {allPoints}
         </div>
 
