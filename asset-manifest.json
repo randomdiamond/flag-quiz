@@ -1,13 +1,14 @@
 {
   "files": {
     "main.css": "/flag-quiz/static/css/main.82c151f0.css",
-    "main.js": "/flag-quiz/static/js/main.cd388650.js",
+    "main.js": "/flag-quiz/static/js/main.8708a90e.js",
     "index.html": "/flag-quiz/index.html",
+    "static/media/points-icon.svg": "/flag-quiz/static/media/points-icon.f059794436d5c9e1621313b150a0b173.svg",
     "main.82c151f0.css.map": "/flag-quiz/static/css/main.82c151f0.css.map",
-    "main.cd388650.js.map": "/flag-quiz/static/js/main.cd388650.js.map"
+    "main.8708a90e.js.map": "/flag-quiz/static/js/main.8708a90e.js.map"
   },
   "entrypoints": [
     "static/css/main.82c151f0.css",
-    "static/js/main.cd388650.js"
+    "static/js/main.8708a90e.js"
   ]
 }
