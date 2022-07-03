@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 export default function Points({ flagCounter, guessCorrect, deliverResults }) {
   const [points, setPoints] = useState(1000);
@@ -15,11 +15,11 @@ export default function Points({ flagCounter, guessCorrect, deliverResults }) {
       setMiliseconds(0);
     }
     if (flagCounter > 1) {
-      guessCorrect 
+      guessCorrect
         ? setAllPoints((prevPoints) => prevPoints + points)
         : setAllPoints((prevPoints) => prevPoints + 1);
-        setMiliseconds(prevTime => prevTime + (points- 1000)*(-30))
-console.log(miliSeconds)
+      setMiliseconds(prevTime => prevTime + (points - 1000) * (-30))
+
       guessCorrect && setAnswersCorrect((prevAmount) => prevAmount + 1);
       setPoints(1000);
     }
@@ -42,7 +42,7 @@ console.log(miliSeconds)
       interval = setInterval(() => {
         if (points > 100) {
           setPoints((prevPoints) => prevPoints - 1);
-          
+
         }
       }, 30);
     } else if (!timerOn) {
@@ -51,11 +51,11 @@ console.log(miliSeconds)
 
     return () => clearInterval(interval);
   }, [timerOn]);
-useEffect(() =>{
-if(points <= 500){
-setTimerOn(false)
-}
-},[points])
+  useEffect(() => {
+    if (points <= 500) {
+      setTimerOn(false)
+    }
+  }, [points])
   return (
     <>
       {flagCounter <= 10 && (

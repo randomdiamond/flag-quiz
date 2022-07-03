@@ -19,9 +19,10 @@ export default function Results({
   miliSeconds
 }) {
   function determineStyles(answer, correct, selected) {
+
     if (correct === answer) {
       return { backgroundColor: "#94D7A2" };
-    } else if (answer === selected && selected !== correct)
+    } else if (answer === selected)
       return { backgroundColor: "#F8BCBC" };
   }
 
@@ -37,16 +38,16 @@ export default function Results({
           {answersCorrect} / 10
         </div>
         <div className="results-data-wrapper-average">
-        <img alt="points" className="points-icon" src={pointsIcon} />
+          <img alt="points" className="points-icon" src={pointsIcon} />
           {allPoints}
         </div>
 
         <div className="results-data-wrapper">
-        <FontAwesomeIcon className="quick-results-icon" icon={faHourglass} />
+          <FontAwesomeIcon className="quick-results-icon" icon={faHourglass} />
           {allPoints <= 10
             ? "egal"
-            : `${miliSeconds/1000} s`}
-          
+            : `${miliSeconds / 1000} s`}
+
         </div>
       </div>
       {flagCounter > 10 && (
@@ -86,21 +87,22 @@ export default function Results({
                 className="results-flag"
                 alt="results-flag"
                 key={nanoid()}
-                src={`https://countryflagsapi.com/svg/${resultData.code}`}
+                src={`https://countryflagsapi.com/svg/${resultData.correct_answer.code}`}
               />
+
               {resultData.answers.map((answer) => (
                 <button
                   style={determineStyles(
                     answer.german,
-                    resultData.correct,
-                    resultData.selected
+                    resultData.correct_answer.german,
+                    resultData.selectedAnswer.german
                   )}
                   key={nanoid()}
                 >
                   {answer.german}
                 </button>
               ))}
-              {resultData.correct === resultData.selected ? (
+              {resultData.correct_answer === resultData.selectedAnswer ? (
                 <FontAwesomeIcon
                   className="correct-icon"
                   icon={faCircleCheck}

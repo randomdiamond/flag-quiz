@@ -8,7 +8,6 @@
 body {
   position: relative;
   height: 100vh;
-  
 }
 .start-container {
   display: flex;
@@ -26,7 +25,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: max(12%, 140px);
+  width: min(max(150px, 18%), 250px);
 }
 .restart-button-container {
   width: min(50%, 220px);
@@ -87,7 +86,6 @@ body {
 nav {
   height: min(max(50px, 3vw), 100px);
   display: flex;
-
   justify-content: center;
   align-items: center;
   box-shadow: 0px 0.98256px 4.4564px rgba(0, 0, 0, 0.1);
@@ -96,6 +94,16 @@ nav {
     font-size: min(max(21px, 3vw), 25px);
     font-weight: bolder;
   }
+  h2:before,
+  h2:after {
+    content: "";
+    width: 1px;
+    height: 20px;
+    background-color: #8ec3ff;
+    margin: 20px;
+    transform: rotate(30deg);
+    display: inline-flex;
+  }
 }
 .flag-counter {
   background-color: #c2deff;
@@ -103,18 +111,18 @@ nav {
   border-radius: 25px;
   padding: 20px 40px;
   font-size: min(max(22px, 4vw), 32px);
-  margin: 30px 0 20px;
+  margin: 20px 0;
 }
 .flag {
   max-height: 250px;
   height: 40vw;
-  border: 1px solid #efeff0;
+  outline: 1px solid #efeff0;
 }
 .answers-container {
   display: flex;
   width: 100%;
   align-items: center;
-  margin: 30px 0 20px;
+  margin: 10px 0 20px;
   flex-direction: column;
   gap: 15px;
   button {
@@ -162,8 +170,8 @@ nav {
     color: #fff;
     font-weight: lighter;
     border-radius: 15px;
-    min-width: 50px; 
-    padding:4px 0
+    min-width: 50px;
+    padding: 4px 0;
   }
 }
 
@@ -219,14 +227,14 @@ nav {
 .answers-results-container {
   margin: 0px 0 10px;
   width: 100%;
-  display:flex;
+  display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 }
 .answers-result-wrapper {
   display: flex;
-  justify-content:space-around;
-  width:40%;
+  justify-content: space-around;
+  width: 40%;
   flex-direction: column;
   align-items: center;
   gap: 10px;
@@ -266,7 +274,7 @@ nav {
   }
   .results-flag {
     height: auto;
-    
+
     border: 1px solid #efeff0;
   }
 }

@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "flagQuiz",
+  "name": "a modern, simple, competitive flag quiz with all 243 countries ",
   "icons": [
     {
       "src": "favicon.ico",
