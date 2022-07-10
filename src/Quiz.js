@@ -13,16 +13,14 @@ export default function Quiz() {
   }, []);
 
   const [answersData, setAnswersData] = useState();
-  const [guessedCorrect, setGuessedCorrect] = useState();
   const [flagCounter, setFlagCounter] = useState(-1);
   const [allPoints, setAllPoints] = useState();
   const [answersCorrect, setAnswersCorrect] = useState();
   const [miliSeconds, setMiliseconds] = useState();
 
   function restartQuiz() {
-    console.log("r")
+
     setAnswersData();
-    setGuessedCorrect();
     setFlagCounter(0);
 
   }
@@ -41,24 +39,25 @@ export default function Quiz() {
       let duplications = 0;
 
       for (let t = 0; t < answersData.length; t++) {
-        answer.code === answersData[t].code && duplications++;
+        answer.code === answersData[t].correct_answer.code && duplications++;
       }
+      answersData.find(dataItem => dataItem.correct_answer.code === answer.code)
       if (duplications === 0) {
         return answer;
       } else {
-
+        console.log("else")
         answer = flagQuizData[Math.floor(Math.random() * 244)];
-        let duplications = 0;
+        duplications = 0;
         for (let t = 0; t < answersData.length; t++) {
-          answer.code === answersData[t] && duplications++;
+          answer.code === answersData[t].correct_answer.code && duplications++;
         }
         if (duplications === 0) {
           return answer;
         } else {
           answer = flagQuizData[Math.floor(Math.random() * 244)];
-          let duplications = 0;
+          duplications = 0;
           for (let t = 0; t < answersData.length; t++) {
-            answer.code === answersData[t] && duplications++;
+            answer.code === answersData[t].correct_answer.code && duplications++;
           }
           if (duplications === 0) {
             return answer;
@@ -71,13 +70,12 @@ export default function Quiz() {
       return flagQuizData[Math.floor(Math.random() * 244)];
     }
   }
-  { console.log(answersData) }
+
   function setNewFlag() {
-    console.log("new flag")
-    console.log(flagCounter)
     setFlagCounter((prevCounter) => prevCounter + 1);
     if (flagCounter < 10) {
       let newCorrectAnswer = findDublications();
+
       let newAnswers = [newCorrectAnswer];
 
       while (newAnswers.length < 3) {
@@ -103,7 +101,7 @@ export default function Quiz() {
       }
 
       newAnswers = newAnswers.sort(() => Math.random() - 0.5);
-      console.log(newAnswers)
+
       if (answersData) {
         setAnswersData(prevAnswersData => [...prevAnswersData, { answers: newAnswers, correct_answer: newCorrectAnswer }])
       }
@@ -114,18 +112,12 @@ export default function Quiz() {
   }
 
   function checkAnswer(selectedAnswer) {
-    setAnswersData(prevData => prevData.map((dataItem, index) => index + 1 === prevData.length ? { ...dataItem, selectedAnswer } : dataItem))
+    setAnswersData(prevData => prevData.map((dataItem, index) => index + 1 === prevData.length
+      ? { ...dataItem, selectedAnswer: selectedAnswer, guessedCorrect: { correct: selectedAnswer === dataItem.correct_answer, correct_answer: dataItem.correct_answer.german } }
+      : dataItem))
 
-    selectedAnswer === answersData[answersData.length - 1].correct_answer
-      ? setGuessedCorrect({
-        correct: true,
-        correct_answer: answersData[answersData.length - 1].correct_answer.german,
-      })
-      : setGuessedCorrect({
-        correct: false,
-        correct_answer: answersData[answersData.length - 1].correct_answer.german,
-      });
-    setNewFlag(selectedAnswer);
+
+    setNewFlag();
   }
 
   return (
@@ -143,15 +135,16 @@ export default function Quiz() {
         {answersData && (
           <Points
             deliverResults={deliverResults}
-            guessCorrect={guessedCorrect ? guessedCorrect.correct : undefined}
+            guessCorrect={flagCounter > 1 ? answersData[answersData.length - 2].guessedCorrect.correct : undefined}
             flagCounter={flagCounter}
           />
         )}
+
         {answersData && flagCounter <= 10 && (
           <Answers checkAnswer={checkAnswer} answers={answersData[answersData.length - 1].answers} />
         )}
-        {guessedCorrect && flagCounter <= 10 && (
-          <PreviousResult guessedCorrect={guessedCorrect} />
+        {answersData && answersData.length > 1 && flagCounter <= 10 && (
+          <PreviousResult guessedCorrect={answersData[answersData.length - 2].guessedCorrect} />
         )}
 
         {answersCorrect >= 0 && flagCounter > 10 && (

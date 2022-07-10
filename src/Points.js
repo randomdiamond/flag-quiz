@@ -15,6 +15,7 @@ export default function Points({ flagCounter, guessCorrect, deliverResults }) {
       setMiliseconds(0);
     }
     if (flagCounter > 1) {
+
       guessCorrect
         ? setAllPoints((prevPoints) => prevPoints + points)
         : setAllPoints((prevPoints) => prevPoints + 1);
@@ -60,7 +61,7 @@ export default function Points({ flagCounter, guessCorrect, deliverResults }) {
     <>
       {flagCounter <= 10 && (
         <div className="points-container">
-          <div style={{ width: `${points / 10}%` }} className="statusbar">
+          <div style={{ width: `${points / 11}%` }} className="statusbar">
             <h3>{points}</h3>
           </div>
         </div>
