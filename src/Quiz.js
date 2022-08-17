@@ -9,24 +9,28 @@ import { useState, useEffect } from "react";
 
 export default function Quiz() {
   useEffect(() => {
+    console.log("useEffect")
     setNewFlag();
+
   }, []);
 
   const [answersData, setAnswersData] = useState();
-  const [flagCounter, setFlagCounter] = useState(-1);
+  const [flagCounter, setFlagCounter] = useState(0);
   const [allPoints, setAllPoints] = useState();
   const [answersCorrect, setAnswersCorrect] = useState();
   const [miliSeconds, setMiliseconds] = useState();
-
+  const [gamesPlayed, setGamesPlayed] = useState(1)
   function restartQuiz() {
 
     setAnswersData();
     setFlagCounter(0);
-
+    setGamesPlayed(prevGames => prevGames + 1)
   }
+  console.log(gamesPlayed)
   useEffect(() => {
-    flagCounter === 0 && setNewFlag()
-  }, [flagCounter])
+    gamesPlayed > 1 && setNewFlag();
+
+  }, [gamesPlayed]);
   function deliverResults(answersCorrect, allPoints, miliSeconds) {
     setAllPoints(allPoints);
     setMiliseconds(miliSeconds);
@@ -72,6 +76,7 @@ export default function Quiz() {
   }
 
   function setNewFlag() {
+
     setFlagCounter((prevCounter) => prevCounter + 1);
     if (flagCounter < 10) {
       let newCorrectAnswer = findDublications();
