@@ -8,11 +8,7 @@ import Results from "./Results.js";
 import { useState, useEffect } from "react";
 
 export default function Quiz() {
-  useEffect(() => {
-    console.log("useEffect")
-    setNewFlag();
-    setNewFlag();
-  }, []);
+
 
   const [answersData, setAnswersData] = useState();
   const [flagCounter, setFlagCounter] = useState(0);
@@ -20,6 +16,11 @@ export default function Quiz() {
   const [answersCorrect, setAnswersCorrect] = useState();
   const [miliSeconds, setMiliseconds] = useState();
   const [gamesPlayed, setGamesPlayed] = useState(1)
+  useEffect(() => {
+    console.log("useEffect")
+    setNewFlag();
+
+  }, []);
   function restartQuiz() {
 
     setAnswersData();
@@ -78,6 +79,7 @@ export default function Quiz() {
   function setNewFlag() {
 
     setFlagCounter((prevCounter) => prevCounter + 1);
+
     if (flagCounter < 10) {
       let newCorrectAnswer = findDublications();
 
