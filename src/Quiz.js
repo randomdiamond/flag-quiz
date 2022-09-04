@@ -11,7 +11,7 @@ export default function Quiz() {
   useEffect(() => {
     console.log("useEffect")
     setNewFlag();
-
+    setNewFlag();
   }, []);
 
   const [answersData, setAnswersData] = useState();
