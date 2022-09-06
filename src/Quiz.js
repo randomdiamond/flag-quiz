@@ -50,7 +50,7 @@ export default function Quiz() {
       if (duplications === 0) {
         return answer;
       } else {
-        console.log("else")
+
         answer = flagQuizData[Math.floor(Math.random() * 244)];
         duplications = 0;
         for (let t = 0; t < answersData.length; t++) {

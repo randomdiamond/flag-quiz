@@ -110,7 +110,7 @@ nav {
   color: #0d1216;
   border-radius: 25px;
   padding: 20px 40px;
-  font-size: min(max(22px, 4vw), 32px);
+  font-size: min(max(22px, 4vw), 28px);
   margin: 20px 0;
 }
 .flag {
@@ -129,12 +129,11 @@ nav {
     background-color: #c2deff;
     color: #0d1216;
     border-radius: 25px;
-
     max-width: 500px;
     width: min(80%, 450px);
     border: 0;
     aspect-ratio: 6/1;
-    font-size: min(max(21px, 3vw), 25px);
+    font-size: min(max(20px, 3vw), 24px);
     cursor: pointer;
   }
   button:hover {
@@ -153,6 +152,7 @@ nav {
 .quick-results-icon {
   font-size: min(max(25px, 3.5vw), 30px);
   margin: 0 10px;
+  font-weight: 500;
 }
 .wrong-icon {
   color: #f72626;
