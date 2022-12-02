@@ -1,14 +1,17 @@
 {
   "files": {
-    "main.css": "/flag-quiz/static/css/main.34d2e8fa.css",
-    "main.js": "/flag-quiz/static/js/main.0c0fb75c.js",
-    "index.html": "/flag-quiz/index.html",
-    "static/media/points-icon.svg": "/flag-quiz/static/media/points-icon.ede27fe6733368eed3d3dd449f93e31c.svg",
-    "main.34d2e8fa.css.map": "/flag-quiz/static/css/main.34d2e8fa.css.map",
-    "main.0c0fb75c.js.map": "/flag-quiz/static/js/main.0c0fb75c.js.map"
+    "main.css": "/static/css/main.415b98e9.css",
+    "main.js": "/static/js/main.eed840bc.js",
+    "static/media/bronze-medal.svg": "/static/media/bronze-medal.7dbb4d5d57cba2873bcc45bd73c98043.svg",
+    "static/media/layered-waves.svg": "/static/media/layered-waves.10c3c62b3cccc8ebc41e7fa7704e4ba7.svg",
+    "static/media/silver-medal.svg": "/static/media/silver-medal.ef92cec8ae510fc056f8e392ba9d60df.svg",
+    "static/media/gold-medal.svg": "/static/media/gold-medal.a67cf13335d221325264bb569e0accc1.svg",
+    "index.html": "/index.html",
+    "main.415b98e9.css.map": "/static/css/main.415b98e9.css.map",
+    "main.eed840bc.js.map": "/static/js/main.eed840bc.js.map"
   },
   "entrypoints": [
-    "static/css/main.34d2e8fa.css",
-    "static/js/main.0c0fb75c.js"
+    "static/css/main.415b98e9.css",
+    "static/js/main.eed840bc.js"
   ]
 }
