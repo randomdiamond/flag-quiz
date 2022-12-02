@@ -8,7 +8,7 @@ import {
   faCircleXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { nanoid } from "nanoid";
-import pointsIcon from './images/points-icon.svg';
+
 
 export default function Results({
   answerResultsData,
@@ -38,7 +38,7 @@ export default function Results({
           {answersCorrect} / 10
         </div>
         <div className="results-data-wrapper-average">
-          <img alt="points" className="points-icon" src={pointsIcon} />
+          <div className="points-icon results" >P</div>
           {allPoints}
         </div>
 
@@ -69,7 +69,7 @@ export default function Results({
       )}
       {answersCorrect > 7 && flagCounter > 10 && (
         <p className="results-message">
-          Du bist ein wahrer Flaggen Meister{" "}
+          Du bist ein wahrer Flaggen Meister
           <FontAwesomeIcon className="smiley" icon={faFaceSmile} />
         </p>
       )}
@@ -87,7 +87,7 @@ export default function Results({
                 className="results-flag"
                 alt="results-flag"
                 key={nanoid()}
-                src={`https://countryflagsapi.com/svg/${resultData.correct_answer.code}`}
+                src={`https://flagcdn.com/${resultData.correct_answer.code}.svg`}
               />
 
               {resultData.answers.map((answer) => (

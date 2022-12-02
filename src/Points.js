@@ -16,12 +16,13 @@ export default function Points({ flagCounter, guessCorrect, deliverResults }) {
     }
     if (flagCounter > 1) {
 
+      guessCorrect && setAnswersCorrect((prevAmount) => prevAmount + 1);
       guessCorrect
         ? setAllPoints((prevPoints) => prevPoints + points)
         : setAllPoints((prevPoints) => prevPoints + 1);
       setMiliseconds(prevTime => prevTime + (points - 1000) * (-30))
+      console.log(allPoints)
 
-      guessCorrect && setAnswersCorrect((prevAmount) => prevAmount + 1);
       setPoints(1000);
     }
     setTimerOn(true);

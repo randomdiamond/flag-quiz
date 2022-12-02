@@ -10,10 +10,12 @@ export default function Start({ startQuiz }) {
         <div className="start-button-container">
           <FontAwesomeIcon className="flag-icon" icon={faFlag} />
           <button className="start-button" onClick={startQuiz}>
-            Start{" "}
+            Start
           </button>
         </div>
+
       </div>
+
     </>
   );
 }
