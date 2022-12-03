@@ -90,7 +90,7 @@ export default function Quiz({ leaderboardData, updateLeaderboardData, getLeader
 
       newLeaderboardData.splice(leaderboardPosition - 1, 0, { username, points: allPoints })
       const newLeaderboardEntry = { username, points: allPoints } // username ist Kurzschreibweise für username:username
-      Axios.post("https://flagquiz.cyclic.app/updateLeaderbaord", newLeaderboardEntry)
+      Axios.post("https://flagquiz.cyclic.app/updateLeaderboard", newLeaderboardEntry)
         .then((response) => {
 
           getLeaderboardData()
