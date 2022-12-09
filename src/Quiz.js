@@ -79,7 +79,7 @@ export default function Quiz({ leaderboardData, updateLeaderboardData, getLeader
 
       if (leaderboardData.length >= 50) {
 
-        Axios.delete(`https://flagquiz.cyclic.app//deleteLeaderboardEntry/${leaderboardData[49]._id}`)
+        Axios.delete(`https://flagquiz.cyclic.app/deleteLeaderboardEntry/${leaderboardData[49]._id}`)
           .then((response) => { console.log(response) }
           )
           .catch((error) => {
