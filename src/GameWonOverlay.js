@@ -24,86 +24,54 @@ export default function GameWonOverlay({ updateLeaderboard, leaderboardPosition 
 
     }, [])
 
-    /*
-        function checkInputEntry(value) {
-            setUsername(value)
-            console.log(isInputFocussed)
-            if (value.length > 0 && value.length <= 2) {
-                const newIndicationMessage = { message: 'Dein Name muss mindestens 3 Zeichen enthalten', icon: faCircleExclamation, color: 'red' }
-                newIndicationMessage !== indicationMessage && setIndicationMessage(newIndicationMessage)
-            }
-            else if (value.length > 2 && value.length <= 16) {
-                const newIndicationMessage = { message: 'valider Name', icon: faCircleCheck, color: 'green' }
-                newIndicationMessage !== indicationMessage && setIndicationMessage(newIndicationMessage)
-            }
-            else if (!value) {
-                const newIndicationMessage = { message: 'Gebe einen Namen ein um dein Ergebnis in die Bestenliste einzutragen', icon: faCircleInfo, color: 'blue' }
-                newIndicationMessage !== indicationMessage && setIndicationMessage(newIndicationMessage)
-            }
-            else if (value.length > 16) {
-                const newIndicationMessage = { message: 'Dein Name darf maximal 16 Zeichen enthalten', icon: faCircleExclamation, color: 'red' }
-                newIndicationMessage !== indicationMessage && setIndicationMessage(newIndicationMessage)
-            }
-    
-        }
-    */
-    function checkInputEntry(value) { // durch ChatGPT verbessert (nicht ausgetestet)
-        setUsername(value);
-        const alphanumericChars = value.replace(/[^a-zA-Z0-9]/g, '').length;
 
-        if (value.trim().length === 0) {
-            const newIndicationMessage = {
-                message: 'Gebe einen Namen ein um dein Ergebnis in die Bestenliste einzutragen',
-                icon: faCircleInfo,
-                color: 'blue',
-            };
-            newIndicationMessage !== indicationMessage && setIndicationMessage(newIndicationMessage);
-        } else if (alphanumericChars < 3) {
-            const newIndicationMessage = {
-                message: 'Dein Name muss mindestens 3 Zeichen enthalten',
-                icon: faCircleExclamation,
-                color: 'red',
-            };
-            newIndicationMessage !== indicationMessage && setIndicationMessage(newIndicationMessage);
-        } else if (alphanumericChars <= 16) {
-            const newIndicationMessage = {
-                message: 'valider Name',
-                icon: faCircleCheck,
-                color: 'green',
-            };
-            newIndicationMessage !== indicationMessage && setIndicationMessage(newIndicationMessage);
-        } else if (alphanumericChars > 16) {
-            const newIndicationMessage = {
-                message: 'Dein Name darf maximal 16 Zeichen enthalten',
-                icon: faCircleExclamation,
-                color: 'red',
-            };
-            newIndicationMessage !== indicationMessage && setIndicationMessage(newIndicationMessage);
+    function checkInputEntry(value) {
+        setUsername(value)
+        console.log(isInputFocussed)
+        if (value.length > 0 && value.length <= 2) {
+            const newIndicationMessage = { message: 'Dein Name muss mindestens 3 Zeichen enthalten', icon: faCircleExclamation, color: 'red' }
+            newIndicationMessage !== indicationMessage && setIndicationMessage(newIndicationMessage)
         }
+        else if (value.length > 2 && value.length <= 16) {
+            const newIndicationMessage = { message: 'valider Name', icon: faCircleCheck, color: 'green' }
+            newIndicationMessage !== indicationMessage && setIndicationMessage(newIndicationMessage)
+        }
+        else if (!value) {
+            const newIndicationMessage = { message: 'Gebe einen Namen ein um dein Ergebnis in die Bestenliste einzutragen', icon: faCircleInfo, color: 'blue' }
+            newIndicationMessage !== indicationMessage && setIndicationMessage(newIndicationMessage)
+        }
+        else if (value.length > 16) {
+            const newIndicationMessage = { message: 'Dein Name darf maximal 16 Zeichen enthalten', icon: faCircleExclamation, color: 'red' }
+            newIndicationMessage !== indicationMessage && setIndicationMessage(newIndicationMessage)
+        }
+
     }
-    return (
-        <>
-            <div className='overlay-container'>
-                <h2>Herzlichen Glückwunsch</h2>
-                <div className='rank-container'>
-                    <FontAwesomeIcon className='ranking-star-icon' icon={faRankingStar} />
-                    <strong>{leaderboardPosition}.Platz</strong> erreicht
-                </div>
 
-                <div className={`indication-message ${indicationMessage.color} `}>
-                    <FontAwesomeIcon className='info-icon' icon={indicationMessage.icon} /><p> {indicationMessage.message}</p>
-                </div>
-                <div className={`${isInputFocussed ? 'focussed' : ''} username-input-wrapper`}>
-                    <FontAwesomeIcon className='user-icon' icon={faCircleUser} />
 
-                    <input placeholder='username' onFocus={() => setIsInputFocussed(true)} onBlur={() => setIsInputFocussed(false)} onChange={(event) => checkInputEntry(event.target.value)} value={username} autoFocus />
-                </div>
-                <button onClick={() => updateLeaderboard(username)}>
-                    eintragen <FontAwesomeIcon className='arrow-right' icon={faArrowRight} />
-                </button>
-            </div >
-            <Fireworks isConfettiOn={isConfettiOn} />
+}
+return (
+    <>
+        <div className='overlay-container'>
+            <h2>Herzlichen Glückwunsch</h2>
+            <div className='rank-container'>
+                <FontAwesomeIcon className='ranking-star-icon' icon={faRankingStar} />
+                <strong>{leaderboardPosition}.Platz</strong> erreicht
+            </div>
 
-        </>
-    )
+            <div className={`indication-message ${indicationMessage.color} `}>
+                <FontAwesomeIcon className='info-icon' icon={indicationMessage.icon} /><p> {indicationMessage.message}</p>
+            </div>
+            <div className={`${isInputFocussed ? 'focussed' : ''} username-input-wrapper`}>
+                <FontAwesomeIcon className='user-icon' icon={faCircleUser} />
+
+                <input placeholder='username' onFocus={() => setIsInputFocussed(true)} onBlur={() => setIsInputFocussed(false)} onChange={(event) => checkInputEntry(event.target.value)} value={username} autoFocus />
+            </div>
+            <button onClick={() => updateLeaderboard(username)}>
+                eintragen <FontAwesomeIcon className='arrow-right' icon={faArrowRight} />
+            </button>
+        </div >
+        <Fireworks isConfettiOn={isConfettiOn} />
+
+    </>
+)
 }
