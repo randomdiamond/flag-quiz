@@ -95,7 +95,10 @@ nav {
   justify-content: center;
   align-items: center;
   box-shadow: 0px 0.98256px 4.4564px rgba(0, 0, 0, 0.1);
-
+  position: fixed;
+  top: 0;
+  background-color: rgba(242, 242, 242, 0.5);
+  z-index: 100;
   h2 {
     font-size: min(max(21px, 3vw), 25px);
     font-weight: bolder;
@@ -110,6 +113,9 @@ nav {
     transform: rotate(30deg);
     display: inline-flex;
   }
+}
+.navbar-space {
+  height: 100px;
 }
 .flag-counter {
   background-color: #c2deff;
