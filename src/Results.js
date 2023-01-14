@@ -69,7 +69,7 @@ export default function Results({
       )}
       {answersCorrect > 7 && flagCounter > 10 && (
         <p className="results-message">
-          Du bist ein wahrer Flaggen Meister
+          Du bist ein wahrer Flaggen Meister{" "}
           <FontAwesomeIcon className="smiley" icon={faFaceSmile} />
         </p>
       )}

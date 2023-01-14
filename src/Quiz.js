@@ -50,7 +50,7 @@ export default function Quiz({ leaderboardData, updateLeaderboardData, getLeader
               }
               console.log(leaderboardData.length, "lb length", leaderboardData)
               console.log("positionIndex", positionIndex, step)
-              step = step > 0 ? Math.ceil(step / 2) : 1
+              step = (step > 0 && step != 2) ? Math.ceil(step / 2) : 1
 
             }
           }
