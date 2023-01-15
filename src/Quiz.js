@@ -68,11 +68,11 @@ export default function Quiz({ leaderboardData, updateLeaderboardData, getLeader
     }
   }, [allPoints])
 
-  function updateLeaderboard(username) {
+  async function updateLeaderboard(username) {
     if ((username.length >= 3 && username.length <= 16) && (leaderboardData.length < 50 || allPoints > leaderboardData[49].points)) {
       console.log("true")
       setGameWonOverlayActive(false)
-      let newLeaderboardData = leaderboardData
+      //let newLeaderboardData = leaderboardData
       console.log(leaderboardData)
       console.log(typeof leaderboardData[49]._id)
       console.log(leaderboardData[49]._id)
@@ -85,24 +85,32 @@ export default function Quiz({ leaderboardData, updateLeaderboardData, getLeader
           .catch((error) => {
             console.log(error);
           })
-        newLeaderboardData.pop()
-      }
-
-      newLeaderboardData.splice(leaderboardPosition - 1, 0, { username, points: allPoints })
-      const newLeaderboardEntry = { username, points: allPoints } // username ist Kurzschreibweise für username:username
-      Axios.post("https://flagquiz.cyclic.app/updateLeaderboard", newLeaderboardEntry)
-        .then((response) => {
-
-          getLeaderboardData()
+        if (error.response.data === "no such leaderboard entry") {
+          await getLeaderboardData()
+          Axios.delete(`https://flagquiz.cyclic.app/deleteLeaderboardEntry/${leaderboardData[49]._id}`)
+            .then((response) => { console.log(response) }
+            )
+            .catch((error) => {
+              console.log(error);
+            })
+          //newLeaderboardData.pop()
         }
-        )
-        .catch((error) => {
-          console.log(error);
-        })
 
+        //newLeaderboardData.splice(leaderboardPosition - 1, 0, { username, points: allPoints })
+        const newLeaderboardEntry = { username, points: allPoints } // username ist Kurzschreibweise für username:username
+        Axios.post("https://flagquiz.cyclic.app/updateLeaderboard", newLeaderboardEntry)
+          .then((response) => {
+
+            getLeaderboardData()
+          }
+          )
+          .catch((error) => {
+            console.log(error);
+          })
+
+      }
     }
   }
-
 
 
   useEffect(() => {
