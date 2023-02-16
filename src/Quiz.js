@@ -74,31 +74,27 @@ export default function Quiz({ leaderboardData, updateLeaderboardData, getLeader
       setGameWonOverlayActive(false)
       //let newLeaderboardData = leaderboardData
       console.log(leaderboardData)
-      console.log(typeof leaderboardData[49]._id)
-      console.log(leaderboardData[49]._id)
+
 
       if (leaderboardData.length >= 50) {
 
-        Axios.delete(`https://flagquiz.cyclic.app/deleteLeaderboardEntry/${leaderboardData[49]._id}`)
-          .then((response) => { console.log(response) }
-          )
+        Axios.delete(`https://flagquiz.cyclic.app/deleteLeaderboardEntry/${leaderboardData[49]._id}`, {
+          headers: {
+            'Authorization': 'Bearer ' + process.env.API_KEY
+          }
+        }).then((response) => { console.log(response) }
+        )
           .catch((error) => {
             console.log(error);
           })
-        if (error.response.data === "no such leaderboard entry") {
-          await getLeaderboardData()
-          Axios.delete(`https://flagquiz.cyclic.app/deleteLeaderboardEntry/${leaderboardData[49]._id}`)
-            .then((response) => { console.log(response) }
-            )
-            .catch((error) => {
-              console.log(error);
-            })
-          //newLeaderboardData.pop()
-        }
 
-        //newLeaderboardData.splice(leaderboardPosition - 1, 0, { username, points: allPoints })
+
         const newLeaderboardEntry = { username, points: allPoints } // username ist Kurzschreibweise für username:username
-        Axios.post("https://flagquiz.cyclic.app/updateLeaderboard", newLeaderboardEntry)
+        Axios.post("https://flagquiz.cyclic.app/updateLeaderboard", {
+          headers: {
+            'Authorization': 'Bearer ' + process.env.API_KEY
+          }
+        }, newLeaderboardEntry)
           .then((response) => {
 
             getLeaderboardData()
