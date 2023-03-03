@@ -78,23 +78,16 @@ export default function Quiz({ leaderboardData, updateLeaderboardData, getLeader
 
       if (leaderboardData.length >= 50) {
 
-        await Axios.delete(`https://flagquiz.cyclic.app/deleteLeaderboardEntry/${leaderboardData[49]._id}`, {
-          headers: {
-            'Authorization': 'Bearer ' + 'SXqEqAqMXFSprKrAmVNcBxmoAqWyEZRhjwvW0HHCm3Q0yGJ62NqpdqUXAjkBGEhIHkPLh1ti72rgsNgoVKrtO7rErjblO3qRNsnLifMwbQJBcXlDsRoFo6aEArtDRDoM'
-          }
-        }).then((response) => { console.log(response) }
-        )
+        await Axios.delete(`https://flagquiz.cyclic.app/deleteLeaderboardEntry/${leaderboardData[49]._id}`)
+          .then((response) => { console.log(response) }
+          )
           .catch((error) => {
             console.log(error);
           })
 
       }
       const newLeaderboardEntry = { username, points: allPoints } // username ist Kurzschreibweise für username:username
-      await Axios.post("https://flagquiz.cyclic.app/updateLeaderboard", {
-        headers: {
-          'Authorization': 'Bearer ' + 'SXqEqAqMXFSprKrAmVNcBxmoAqWyEZRhjwvW0HHCm3Q0yGJ62NqpdqUXAjkBGEhIHkPLh1ti72rgsNgoVKrtO7rErjblO3qRNsnLifMwbQJBcXlDsRoFo6aEArtDRDoM'
-        }
-      }, newLeaderboardEntry)
+      await Axios.post("https://flagquiz.cyclic.app/updateLeaderboard", newLeaderboardEntry)
         .then((response) => {
 
           getLeaderboardData()
