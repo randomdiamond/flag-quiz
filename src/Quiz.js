@@ -78,7 +78,7 @@ export default function Quiz({ leaderboardData, updateLeaderboardData, getLeader
 
       if (leaderboardData.length >= 50) {
 
-        await Axios.delete(`https://flagquiz.cyclic.app/deleteLeaderboardEntry/${leaderboardData[49]._id}`)
+        await Axios.delete(`https://flag-quiz-backend.up.railway.app/deleteLeaderboardEntry/${leaderboardData[49]._id}`)
           .then((response) => { console.log(response) }
           )
           .catch((error) => {
@@ -87,7 +87,7 @@ export default function Quiz({ leaderboardData, updateLeaderboardData, getLeader
 
       }
       const newLeaderboardEntry = { username, points: allPoints } // username ist Kurzschreibweise für username:username
-      await Axios.post("https://flagquiz.cyclic.app/updateLeaderboard", newLeaderboardEntry)
+      await Axios.post("https://flag-quiz-backend.up.railway.app/updateLeaderboard", newLeaderboardEntry)
         .then((response) => {
 
           getLeaderboardData()

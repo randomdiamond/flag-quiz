@@ -13,7 +13,7 @@ function App() {
 
   }, [])
   function getLeaderboardData() {
-    Axios.get("https://flagquiz.cyclic.app/getLeaderboard")
+    Axios.get("https://flag-quiz-backend.up.railway.app/getLeaderboard")
       .then((response) => {
         setLeaderboardData(response.data.sort((a, b) => (b.points - a.points)))
 
